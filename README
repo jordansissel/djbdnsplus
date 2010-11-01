@@ -1,7 +1,10 @@
-djbdns 1.05
-20010211
-Copyright 2001
-D. J. Bernstein
+This is a fork of djbdns 1.05 originally authored by D. J. Bernstein.
 
 djbdns home page: http://cr.yp.to/djbdns.html
 Installation instructions: http://cr.yp.to/djbdns/install.html
+
+---
+
+Changes:
+- SIGHUP will flush the cache in dnscache
+- Debian's 0002-djbdns-misformats-some-long-response-packets-patch-a.diff patch
