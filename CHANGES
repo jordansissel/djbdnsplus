@@ -374,3 +374,7 @@
 	ui: servers print starting message.
 	internal: some respond() declarations.
 	version: djbdns 1.05.
+20101101
+	project: Forked to http://github.com/jordansissel/djbdnsplus/
+	ui: dnscache will now clear its cache when it receives SIGHUP
+	version: djbdnsplus 1.05.06
