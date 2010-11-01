@@ -1,5 +1,6 @@
 # Don't edit Makefile! Use conf-* for configuration.
 
+VERSION=1.05.01
 SHELL=/bin/sh
 
 default: it
@@ -1104,3 +1105,6 @@ walldns.o: \
 compile walldns.c byte.h dns.h stralloc.h gen_alloc.h iopause.h \
 taia.h tai.h uint64.h taia.h dd.h response.h uint32.h
 	./compile walldns.c
+
+package:
+	sh package.sh
