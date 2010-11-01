@@ -12,6 +12,7 @@ extern void log_querydone(uint64 *,unsigned int);
 extern void log_tcpopen(const char *,unsigned int);
 extern void log_tcpclose(const char *,unsigned int);
 
+extern void log_cacheflush(void);
 extern void log_cachedanswer(const char *,const char *);
 extern void log_cachedcname(const char *,const char *);
 extern void log_cachednxdomain(const char *);

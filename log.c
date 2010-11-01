@@ -150,6 +150,12 @@ void log_tx(const char *q,const char qtype[2],const char *control,const char ser
   line();
 }
 
+void log_cacheflush(void)
+{
+  string("cache flush");
+  line();
+}
+
 void log_cachedanswer(const char *q,const char type[2])
 {
   string("cached "); logtype(type); space();

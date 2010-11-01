@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <signal.h>
 #include "env.h"
 #include "exit.h"
 #include "scan.h"
@@ -22,6 +23,9 @@
 #include "log.h"
 #include "okclient.h"
 #include "droproot.h"
+
+static int want_cache_flush = 0;
+#define FATAL "dnscache: fatal: "
 
 static int packetquery(char *buf,unsigned int len,char **q,char qtype[2],char qclass[2],char id[2])
 {
@@ -318,6 +322,12 @@ static void doit(void)
   int r;
 
   for (;;) {
+    if (want_cache_flush) {
+      want_cache_flush = 0;
+      log_cacheflush();
+      if (!cache_flush())
+        strerr_die2x(111,FATAL,"not enough memory for cache (for flush)");
+    }
     taia_now(&stamp);
     taia_uint(&deadline,120);
     taia_add(&deadline,&deadline,&stamp);
@@ -381,9 +391,11 @@ static void doit(void)
 	t_new();
   }
 }
-  
-#define FATAL "dnscache: fatal: "
 
+static void sighup(int sig) {
+  want_cache_flush = 1;
+}
+  
 char seed[128];
 
 int main()
@@ -442,6 +454,7 @@ int main()
   if (socket_listen(tcp53,20) == -1)
     strerr_die2sys(111,FATAL,"unable to listen on TCP socket: ");
 
+  signal(SIGHUP, sighup);
   log_startup();
   doit();
 }

@@ -4,6 +4,7 @@
 #include "exit.h"
 #include "tai.h"
 #include "cache.h"
+#include "log.h"
 
 uint64 cache_motion = 0;
 
@@ -204,4 +205,8 @@ int cache_init(unsigned int cachesize)
   unused = size;
 
   return 1;
+}
+
+int cache_flush(void) {
+  return cache_init(size);
 }
