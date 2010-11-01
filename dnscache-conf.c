@@ -93,7 +93,7 @@ int main(int argc,char **argv)
   if (fdrootservers == -1) {
     if (errno != error_noent)
       strerr_die2sys(111,FATAL,"unable to open /etc/dnsroots.local: ");
-    # TODO(sissel): make this obey auto_home
+    /* TODO(sissel): make this obey auto_home */
     fdrootservers = open_read("/usr/share/djbdnsplus/dnsroots.global");
     if (fdrootservers == -1)
       strerr_die2sys(111,FATAL,"unable to open /usr/share/djbdnsplus/dnsroots.global: ");
