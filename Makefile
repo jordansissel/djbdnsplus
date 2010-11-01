@@ -1109,7 +1109,7 @@ taia.h tai.h uint64.h taia.h dd.h response.h uint32.h
 	./compile walldns.c
 
 conf-home:
-	echo "$$DESTDIR/$$PREFIX" > conf-home
+	echo "$${DESTDIR}$${PREFIX}" > conf-home
 
 package:
 	sh package.sh
