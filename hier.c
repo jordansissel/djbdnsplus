@@ -3,7 +3,7 @@
 void hier()
 {
   d(auto_home,"share/djbdnsplus",-1,-1,02755);
-  c(auto_home,"share","djbdnsplus","dnsroots.global",-1,-1,0644);
+  c(auto_home,"share/djbdnsplus","dnsroots.global",-1,-1,0644);
 
   h(auto_home,-1,-1,02755);
 
