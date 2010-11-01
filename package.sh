@@ -1,8 +1,8 @@
-VERSION=1.05.01
-PACKAGE=djbdnsplus
+NAME=djbdnsplus
+VERSION=$(awk '{print $2}' VERSION)
 
 TMP="/tmp"
-PACKAGE="$PACKAGE-$VERSION"
+PACKAGE="$NAME-$VERSION"
 DIR="${TMP}/${PACKAGE}"
 rm -rf "$DIR"
 mkdir "$DIR"
@@ -10,8 +10,9 @@ mkdir "$DIR"
 filelist=$(mktemp)
 git ls-files | sed -e 's/^/+ /' > $filelist
 echo "- *" >> $filelist
-rsync -rtv --filter ". $filelist" . $DIR
+rsync -rt --filter ". $filelist" . $DIR
 rm $filelist
 
 tar -C $TMP -zcf ${PACKAGE}.tar.gz $PACKAGE
 rm -r $DIR
+echo "Package is ready: $PACKAGE.tar.gz"

@@ -1,7 +1,6 @@
 # Don't edit Makefile! Use conf-* for configuration.
 
 SHELL=/bin/sh
-VERSION=1.05.01
 DESTDIR?=
 PREFIX?=/usr/local
 
